@@ -1,8 +1,3 @@
-/* ============================================
-   BATAS KEGELAPAN - JavaScript
-   Horror Comic Website Interactions
-   ============================================ */
-
 "use strict";
 
 // ============ LOADING SCREEN ============
@@ -13,9 +8,9 @@ class LoadingScreen {
     this.text = document.querySelector(".loading-text");
     this.messages = [
       "MENGINISIALISASI...",
-      "MEMUAT KEGELAPAN...",
+      "MEMUAT...",
       "MEMBUKA PORTAL...",
-      "JANGAN LIHAT KE BELAKANG...",
+      "TUNGGU SEBENTAR...",
       "SELAMAT DATANG...",
     ];
     this.init();
