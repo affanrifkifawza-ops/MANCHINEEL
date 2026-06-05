@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MANCHINEEL — Komik Edukasi. Tragedi Akibat Kelalaian dalam Kehidupan Sehari-hari Baca sekarang."
+    />
+    <meta name="theme-color" content="#020202" />
+    <meta property="og:title" content="MANCHINEEL — Komik Edukasi" />
+    <meta property="og:description" content="Tidak semua pintu harus dibuka." />
+    <meta property="og:type" content="website" />
+    <title>MANCHINEEL — Komik Edukasi Keselamatan</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      /* Page-specific additions */
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+        margin-top: 48px;
+        padding-top: 48px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        flex-wrap: wrap;
+      }
+
+      .hero-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .hero-stat-val {
+        font-family: var(--font-heading);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--white);
+      }
+
+      .hero-stat-val .unit {
+        font-size: 0.9rem;
+        color: var(--red-bright);
+      }
+
+      .hero-stat-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .warning-bar {
+        background: linear-gradient(
+          135deg,
+          rgba(139, 0, 0, 0.15),
+          rgba(100, 0, 0, 0.05)
+        );
+        border: 1px solid rgba(139, 0, 0, 0.2);
+        border-radius: var(--radius);
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 60px;
+      }
+
+      .warning-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: var(--red-bright);
+      }
+
+      .warning-bar p {
+        font-family: var(--font-heading);
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        color: var(--red-bright);
+        text-transform: uppercase;
+      }
+
+      .section-warning {
+        font-size: 0.65rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--red-bright);
+        opacity: 0.6;
+        text-align: center;
+        margin-top: -40px;
+        margin-bottom: 60px;
+      }
+
+      .view-all-wrap {
+        text-align: center;
+        margin-top: 48px;
+      }
+
+      .comic-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+
+      .tag {
+        background: rgba(139, 0, 0, 0.1);
+        border: 1px solid rgba(139, 0, 0, 0.25);
+        color: var(--text-muted);
+        font-family: var(--font-heading);
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: var(--radius);
+        transition: var(--transition-fast);
+      }
+
+      .tag:hover {
+        background: rgba(139, 0, 0, 0.2);
+        color: var(--text-dim);
+      }
+
+      .chapter-count-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+      }
+
+      .chapter-count-label span {
+        font-family: var(--font-heading);
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .chapter-count-label strong {
+        color: var(--red-bright);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loading-content">
+        <div class="loading-eye"></div>
+        <div class="loading-title">MANCHINEEL</div>
+        <div class="loading-subtitle">Komik Edukasi Keselamatan</div>
+        <div class="loading-bar-wrap">
+          <div class="loading-bar"></div>
+        </div>
+        <div class="loading-text">MEMUAT...</div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar">
+      <a class="nav-logo" href="index.html">
+        <div class="logo-icon">
+          <svg
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              stroke="#8b0000"
+              stroke-width="1.5"
+            />
+            <ellipse
+              cx="20"
+              cy="20"
+              rx="8"
+              ry="8"
+              fill="#8b0000"
+              opacity="0.9"
+            />
+            <circle cx="20" cy="20" r="3" fill="#cc0000" />
+            <line
+              x1="20"
+              y1="2"
+              x2="20"
+              y2="10"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+            <line
+              x1="20"
+              y1="30"
+              x2="20"
+              y2="38"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+            <line
+              x1="2"
+              y1="20"
+              x2="10"
+              y2="20"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+            <line
+              x1="30"
+              y1="20"
+              x2="38"
+              y2="20"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
+        <span class="logo-text">MANCHINEEL</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="active">Beranda</a>
+        <a href="#chapters">Chapter</a>
+        <a href="about.html">Tentang kami</a>
+        <a href="reader.html?chapter=1" class="nav-cta">Baca Sekarang</a>
+      </div>
+
+      <button class="nav-hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <a href="index.html">Beranda</a>
+      <a href="#chapters">Chapter</a>
+      <a href="about.html">Tentang kami</a>
+      <a href="reader.html?chapter=1">Baca Sekarang</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-bg">
+        <img
+          class="hero-bg-image"
+          src="https://images.unsplash.com/photo-1518534249130-d2ee67f79c91?w=1800&q=80"
+          alt="Horror background"
+          loading="eager"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-vignette"></div>
+      </div>
+
+      <div class="ambient-particles"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>Komik Edukasi • Keselamatan • Awareness</span>
+        </div>
+
+        <h1 class="hero-title">
+          <!-- <span class="glitch" data-text="BATAS">BATAS</span><br /> -->
+          <span class="glitch" data-text="MANCHINEEL">MANCHINEEL</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          Tragedi Akibat Kelalaian dalam Kehidupan Sehari-hari
+        </div>
+
+        <p class="hero-desc">
+          Project komik edukasi yang mengangkat berbagai kejadian tragis akibat
+          kelalaian dalam kehidupan sehari-hari. Melalui enam cerita pendek,
+          pembaca diajak memahami pentingnya kewaspadaan, tanggung jawab, dan
+          keselamatan dalam setiap aktivitas.
+        </p>
+
+        <div class="hero-actions">
+          <a href="reader.html?chapter=1" class="btn-primary">
+            <span>Mulai Membaca</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
+          </a>
+          <a href="#chapters" class="btn-secondary"> Lihat Chapter </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-val">6<span class="unit"> Ch</span></div>
+            <div class="hero-stat-label">Total Chapter</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">20+<span class="unit">+</span></div>
+            <div class="hero-stat-label">Halaman</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">4.9<span class="unit">/5</span></div>
+            <div class="hero-stat-label">Rating</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">12K<span class="unit">+</span></div>
+            <div class="hero-stat-label">Pembaca</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll">
+        <span>Gulir</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ============ COMIC INFO ============ -->
+    <section class="comic-info">
+      <div class="comic-info-grid">
+        <!-- Cover -->
+        <div class="comic-cover-wrap fade-in">
+          <div class="comic-cover">
+            <span class="cover-badge">● Ongoing</span>
+            <img
+              src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&q=90"
+              alt="MANCHINEEL Cover"
+              loading="lazy"
+            />
+            <div class="cover-genre">
+              <span class="genre-tag">Thriller</span>
+              <span class="genre-tag">Psikologis</span>
+            </div>
+          </div>
+
+          <div class="cover-stats">
+            <div class="stat-box">
+              <span class="stat-value stars">★★★★★</span>
+              <span class="stat-label">4.9 Rating</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">12K+</span>
+              <span class="stat-label">Total Views</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">6</span>
+              <span class="stat-label">Chapter</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">20+</span>
+              <span class="stat-label">Halaman</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meta -->
+        <div class="comic-meta-col">
+          <h2 class="comic-meta-title flicker-random fade-in-up">MANCHINEEL</h2>
+          <div class="comic-meta-sub fade-in-up">
+            Tragedi Akibat Kelalaian dalam Kehidupan Sehari-hari
+          </div>
+
+          <div class="meta-status fade-in-up">
+            <span class="status-dot"></span>
+            <span style="color: var(--text-muted); font-size: 0.8rem"
+              >Ongoing • 6 Chapter • 2026</span
+            >
+          </div>
+
+          <div class="comic-tags fade-in-up">
+            <span class="tag">Psikologis</span>
+            <span class="tag">Gore Minimal</span>
+            <span class="tag">18+</span>
+            <span class="tag">Thriller</span>
+          </div>
+
+          <blockquote class="comic-synopsis fade-in-up">
+            Kumpulan cerita ini mengangkat tema horor realitas yang mencekam, di
+            mana benang merah dari setiap peristiwa adalah kematian dan cedera
+            tragis yang terjadi secara mendadak di tengah aktivitas
+            sehari-hari.<br /><br />
+
+            • Tak Kasat Mata: Ketenangan sebuah jalan raya berubah menjadi horor
+            mematikan saat seutas benang layangan yang transparan melilit leher
+            seorang pengendara motor. Malangnya, benang tersebut tersangkut pada
+            truk yang melaju kencang dari arah berlawanan, menarik nyawa sang
+            pengendara seketika tanpa disadari oleh sopir truk.<br /><br />
+            • Perempuan di Kursi Belakang: Sebuah taksi terpaksa membanting
+            setir dan menghantam pembatas jalan demi menghindari tabrakan maut.
+            Akibat gaya inersia yang dahsyat, seorang penumpang wanita yang
+            sedang tertidur terlempar hebat. Naas, anting hoop besar yang
+            dipakainya tersangkut di besi sandaran kepala, merobek daun
+            telinganya hingga parah saat tubuhnya tersentak maju. <br /><br />
+
+            • Di Belakang Punggungnya: Di sebuah taman yang damai, seorang pria
+            asyik bermain ponsel dengan *earphone* terpasang, membuatnya abai
+            dengan suara sekitar. Di belakangnya, sebuah mesin pemotong rumput
+            mengalami kerusakan setelah menghantam batu. Bilah pisau logamnya
+            terlepas, melesat cepat, dan menghantam bagian belakang kepala pria
+            tersebut hingga tewas seketika.<br /><br />
+            • Yang Tidak Ditandai: Sebuah tragedi memilukan terjadi di dalam
+            rumah ketika permainan perang-perangan antara kakek dan cucunya
+            berubah menjadi petaka. Sang cucu yang masih kecil salah mengambil
+            pisau dapur asli yang dikiranya pisau mainan berlakban kuning di
+            meja makan. Bocah tersebut menusuk rusuk kakeknya hingga tewas di
+            tengah suasana rumah yang semula hangat. <br /><br />
+            • Tepi Jembatan: Akibat tekanan dan provokasi dari kerumunan
+            penonton yang tidak sabar, seorang perempuan pemula nekat melompat
+            dari jembatan wisata bungee jumping terlalu dini. Ia salah mengira
+            teriakan penonton sebagai aba-aba petugas, padahal operator belum
+            selesai menyesuaikan tali pengaman. Perempuan itu jatuh dan
+            menghantam batu sungai dengan fatal.<br /><br />
+            • Malam yang Tidak Sampai Rumah: Seorang pemuda yang baru keluar
+            dari minimarket menyeberang jalan di zebra cross dengan patuh saat
+            lampu hijau pejalan kaki menyala. Namun, seorang pengemudi SUV yang
+            mabuk terdistraksi karena mengambil ponselnya yang jatuh ke bawah
+            kursi. Mobil melaju tanpa kendali dan menghantam tubuh pemuda
+            tersebut hingga tewas di tempat. Secara keseluruhan, kisah-kisah ini
+            menjadi sebuah pengingat yang mengerikan bahwa bahaya sering kali
+            mengintai di balik momen-momen paling biasa, dan kehidupan bisa
+            berubah selamanya hanya dalam satu kedipan mata.
+          </blockquote>
+
+          <div class="synopsis-toggle-wrap fade-in-up">
+            <button id="synopsis-toggle" class="btn-secondary" type="button">
+              Sembunyikan teks
+            </button>
+          </div>
+
+          <div class="comic-actions fade-in-up">
+            <a href="reader.html?chapter=1" class="btn-primary">
+              <span>Baca Chapter 1</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polygon points="5,3 19,12 5,21" />
+              </svg>
+            </a>
+            <a href="reader.html?chapter=6" class="btn-secondary">
+              <span>Chapter Terakhir</span>
+            </a>
+          </div>
+
+          <div class="divider"></div>
+
+          <div
+            class="warning-bar fade-in-up"
+            style="margin-top: 24px; margin-bottom: 0"
+          >
+            <svg
+              class="warning-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+              />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            <p>
+              Konten ini mengandung tema psikologis berat. Direkomendasikan
+              untuk pembaca 18+.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHAPTERS ============ -->
+    <section class="chapters-section" id="chapters">
+      <div class="chapters-wrap">
+        <div class="section-header fade-in-up">
+          <div class="section-label">Daftar Cerita</div>
+          <h2 class="section-title">Chapter</h2>
+        </div>
+
+        <div class="chapter-count-label fade-in-up">
+          <span>Menampilkan <strong>6 dari 6</strong> chapter</span>
+          <span>Terakhir diperbarui: June 05, 2026</span>
+        </div>
+
+        <div class="chapters-grid" id="chapters-container">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="nav-logo" href="index.html" style="margin-bottom: 0">
+              <div class="logo-icon" style="width: 32px; height: 32px">
+                <svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="20"
+                    cy="20"
+                    r="18"
+                    stroke="#8b0000"
+                    stroke-width="1.5"
+                  />
+                  <ellipse
+                    cx="20"
+                    cy="20"
+                    rx="8"
+                    ry="8"
+                    fill="#8b0000"
+                    opacity="0.9"
+                  />
+                  <circle cx="20" cy="20" r="3" fill="#cc0000" />
+                </svg>
+              </div>
+              <span class="logo-text">MANCHINEEL</span>
+            </a>
+            <p>Education Comic by Group 4.</p>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Navigasi</div>
+            <ul class="footer-links">
+              <li><a href="index.html">Beranda</a></li>
+              <li><a href="#chapters">Chapter</a></li>
+              <li><a href="about.html">Tentang Kami</a></li>
+              <li><a href="reader.html?chapter=1">Mulai Baca</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Chapter</div>
+            <ul class="footer-links">
+              <li>
+                <a href="reader.html?chapter=1">Ch.1 — Benang Tak Kasat Mata</a>
+              </li>
+              <li>
+                <a href="reader.html?chapter=2"
+                  >Ch.2 — Perempuan di Kursi Belakang</a
+                >
+              </li>
+              <li>
+                <a href="reader.html?chapter=3"
+                  >Ch.3 — Di Belakang Punggungnya</a
+                >
+              </li>
+              <li>
+                <a href="reader.html?chapter=4">Ch.4 — Yang tidak Ditandai</a>
+              </li>
+              <li>
+                <a href="reader.html?chapter=5">Ch.5 — Tepi Jembatan</a>
+              </li>
+              <li>
+                <a href="reader.html?chapter=6"
+                  >Ch.6 — Malam yang Tidak Sampai Rumah</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            © 2026 <span>MANCHINEEL</span> · Group 4 · Semua hak milik Allah
+          </div>
+          <div class="footer-social">
+            <a class="social-btn" href="#" title="Instagram">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="3.5" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+              </svg>
+            </a>
+            <a class="social-btn" href="#" title="Twitter/X">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 4l16 16M4 20L20 4" />
+              </svg>
+            </a>
+            <a class="social-btn" href="#" title="Webtoon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <path d="M8 12h8M8 8h8M8 16h5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

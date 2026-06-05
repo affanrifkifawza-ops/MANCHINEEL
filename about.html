@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tim MANCHINEEL — Tim di balik Komik Edukasi ini."
+    />
+    <title>MANCHINEEL — Tentang Kami</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      /* ===== HERO ===== */
+      .about-hero {
+        padding-top: 70px;
+        min-height: 60vh;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 70px;
+        position: relative;
+        overflow: hidden;
+      }
+      .about-hero-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        filter: grayscale(70%) brightness(0.18) contrast(1.3);
+      }
+      .about-hero-grad {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(2, 2, 2, 0.5) 0%,
+          rgba(139, 0, 0, 0.04) 50%,
+          rgba(2, 2, 2, 1) 100%
+        );
+      }
+      .about-hero-lines {
+        position: absolute;
+        inset: 0;
+        background-image:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 79px,
+            rgba(139, 0, 0, 0.035) 80px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 79px,
+            rgba(139, 0, 0, 0.035) 80px
+          );
+      }
+      .about-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 5%;
+      }
+      .about-hero-badge {
+        font-family: var(--font-heading);
+        font-size: 0.65rem;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: var(--red-bright);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        opacity: 0;
+        animation: fade-up 0.8s ease 0.3s forwards;
+      }
+      .about-hero-badge::before {
+        content: "";
+        width: 30px;
+        height: 1px;
+        background: var(--red-bright);
+        box-shadow: 0 0 6px var(--red-bright);
+      }
+      .about-hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.8rem, 7vw, 5.5rem);
+        font-weight: 900;
+        color: var(--white);
+        line-height: 1;
+        opacity: 0;
+        animation: fade-up 0.8s ease 0.5s forwards;
+      }
+      .about-hero-sub {
+        font-family: var(--font-heading);
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        margin-top: 14px;
+        opacity: 0;
+        animation: fade-up 0.8s ease 0.7s forwards;
+      }
+
+      /* ===== INTRO STRIP ===== */
+      .intro-strip {
+        background: linear-gradient(
+          135deg,
+          rgba(139, 0, 0, 0.08),
+          rgba(80, 0, 0, 0.03)
+        );
+        border-top: 1px solid rgba(139, 0, 0, 0.15);
+        border-bottom: 1px solid rgba(139, 0, 0, 0.15);
+        padding: 32px 5%;
+      }
+      .intro-strip-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .intro-strip-symbol {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        opacity: 0.7;
+      }
+      .intro-strip p {
+        font-family: var(--font-heading);
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        font-style: italic;
+        max-width: 720px;
+      }
+      .intro-strip p em {
+        color: var(--red-bright);
+        font-style: normal;
+      }
+
+      /* ===== MAIN LAYOUT ===== */
+      .about-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 5% 0;
+      }
+
+      /* ===== SECTION: TEAM ===== */
+      .team-section {
+        padding: 0 0 80px;
+      }
+      .team-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+      .team-header .section-label {
+        margin-bottom: 16px;
+      }
+      .team-header .section-title {
+        margin-bottom: 16px;
+      }
+      .team-header p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      .member-tag {
+        background: rgba(139, 0, 0, 0.1);
+        border: 1px solid rgba(139, 0, 0, 0.25);
+        color: var(--red-bright);
+        font-family: var(--font-heading);
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: var(--radius);
+      }
+
+      /* Uniform 5-card grid */
+      .team-members-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        align-items: stretch;
+      }
+      .member-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: var(--dark-2);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        position: relative;
+        transition: var(--transition);
+        cursor: default;
+        min-height: auto;
+        max-height: 340px;
+      }
+      .member-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--red), var(--red-hot));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .member-card:hover {
+        border-color: rgba(139, 0, 0, 0.3);
+        transform: translateY(-6px);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.6),
+          0 0 30px rgba(139, 0, 0, 0.15);
+      }
+      .member-card:hover::after {
+        transform: scaleX(1);
+      }
+      .member-img-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 82px;
+        display: grid;
+        place-items: center;
+        padding: 0 12px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03) 0%,
+          rgba(0, 0, 0, 0.14) 45%,
+          rgba(0, 0, 0, 0.28) 100%
+        );
+      }
+      .member-img-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.06),
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(255, 255, 255, 0.03),
+            transparent 16%
+          );
+        pointer-events: none;
+      }
+      .member-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        filter: grayscale(40%) brightness(0.65) contrast(1.1);
+        transition: var(--transition-slow);
+      }
+      .member-card:hover .member-img-wrap img {
+        filter: grayscale(15%) brightness(0.8);
+        transform: scale(1.06);
+      }
+      .member-img-grad {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        background: linear-gradient(to top, var(--dark-2) 0%, transparent 100%);
+      }
+      .member-num-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(2, 2, 2, 0.85);
+        border: 1px solid rgba(139, 0, 0, 0.4);
+        font-family: var(--font-heading);
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: var(--red-bright);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+      }
+      .member-body {
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .member-name {
+        font-family: var(--font-heading);
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 0;
+        transition: var(--transition-fast);
+      }
+      .member-card:hover .member-name {
+        color: var(--red-bright);
+      }
+      .member-role {
+        font-family: var(--font-heading);
+        font-size: 0.58rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--red-bright);
+        margin-bottom: 6px;
+      }
+      .member-bio {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        line-height: 1.45;
+        margin-bottom: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.9em;
+      }
+      .member-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .member-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .member-socials-mini {
+        display: flex;
+        gap: 6px;
+      }
+      .social-mini {
+        width: 24px;
+        height: 24px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray-mid);
+        transition: var(--transition-fast);
+        text-decoration: none;
+      }
+      .social-mini:hover {
+        border-color: var(--red);
+        color: var(--red-bright);
+      }
+
+      /* ===== PROJECT INFO SECTION ===== */
+      .project-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5% 80px;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+      .project-block {
+        background: var(--dark-2);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        border-radius: var(--radius-lg);
+        padding: 36px;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-block::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--red), transparent);
+      }
+      .project-block-title {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .project-block-title span {
+        color: var(--red-bright);
+      }
+      .project-block p {
+        font-size: 0.87rem;
+        color: var(--text-muted);
+        line-height: 1.9;
+      }
+      .project-block p + p {
+        margin-top: 10px;
+      }
+
+      /* Stats bar */
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+        background: rgba(139, 0, 0, 0.12);
+        border: 1px solid rgba(139, 0, 0, 0.12);
+        border-radius: var(--radius);
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+      .stat-cell {
+        background: var(--dark-2);
+        padding: 22px 16px;
+        text-align: center;
+      }
+      .stat-cell-val {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--white);
+        display: block;
+      }
+      .stat-cell-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      /* Inspiration list */
+      .inspo-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .inspo-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.82rem;
+        color: var(--text-dim);
+        line-height: 1.5;
+      }
+      .inspo-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--red);
+        flex-shrink: 0;
+        margin-top: 6px;
+        box-shadow: 0 0 6px rgba(139, 0, 0, 0.6);
+      }
+
+      /* Mystery block */
+      .mystery-msg {
+        background: rgba(2, 2, 2, 0.9);
+        border: 1px solid rgba(139, 0, 0, 0.2);
+        border-radius: var(--radius-lg);
+        padding: 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .mystery-msg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(139, 0, 0, 0.05),
+          transparent 70%
+        );
+      }
+      .mystery-symbol {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        animation: float 5s ease-in-out infinite;
+        display: block;
+      }
+      .mystery-text {
+        font-family: var(--font-heading);
+        font-size: 0.88rem;
+        line-height: 2.1;
+        color: var(--text-muted);
+        font-style: italic;
+        position: relative;
+        z-index: 1;
+      }
+      .mystery-text em {
+        color: var(--red-bright);
+        font-style: normal;
+      }
+      .glitch-separator {
+        text-align: center;
+        padding: 20px 0;
+        font-family: var(--font-heading);
+        font-size: 0.65rem;
+        letter-spacing: 0.5em;
+        color: rgba(139, 0, 0, 0.3);
+        text-transform: uppercase;
+      }
+
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1200px) {
+        .team-members-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .team-members-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-bar {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .inspo-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .team-members-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-bar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar scrolled">
+      <a class="nav-logo" href="index.html">
+        <div class="logo-icon">
+          <svg
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              stroke="#8b0000"
+              stroke-width="1.5"
+            />
+            <ellipse
+              cx="20"
+              cy="20"
+              rx="8"
+              ry="8"
+              fill="#8b0000"
+              opacity="0.9"
+            />
+            <circle cx="20" cy="20" r="3" fill="#cc0000" />
+            <line
+              x1="20"
+              y1="2"
+              x2="20"
+              y2="10"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+            <line
+              x1="20"
+              y1="30"
+              x2="20"
+              y2="38"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+            <line
+              x1="2"
+              y1="20"
+              x2="10"
+              y2="20"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+            <line
+              x1="30"
+              y1="20"
+              x2="38"
+              y2="20"
+              stroke="#8b0000"
+              stroke-width="1.5"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
+        <span class="logo-text">MANCHINEEL</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="index.html#chapters">Chapter</a>
+        <a href="about.html" class="active">Tentang kami</a>
+        <a href="reader.html?chapter=1" class="nav-cta">Baca Sekarang</a>
+      </div>
+
+      <button class="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#chapters">Chapter</a>
+      <a href="about.html">Tentang Kami</a>
+      <a href="reader.html?chapter=1">Baca Sekarang</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <div class="about-hero">
+      <img
+        class="about-hero-img"
+        src="https://images.unsplash.com/photo-1604076913837-52ab5629fde4?w=1800&q=80"
+        alt="Team background"
+        loading="eager"
+      />
+      <div class="about-hero-grad"></div>
+      <div class="about-hero-lines"></div>
+      <div class="about-hero-content">
+        <h1 class="about-hero-title">TIM KAMI</h1>
+        <div class="about-hero-sub">
+          Lima Jiwa Di Balik Satu Cerita kejadian
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ INTRO STRIP ============ -->
+    <div class="intro-strip">
+      <div class="intro-strip-inner">
+        <svg
+          class="intro-strip-symbol"
+          viewBox="0 0 48 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="24"
+            cy="24"
+            r="22"
+            stroke="#8b0000"
+            stroke-width="1"
+            stroke-dasharray="3 3"
+          />
+          <circle
+            cx="24"
+            cy="24"
+            r="14"
+            stroke="#8b0000"
+            stroke-width="1"
+            opacity="0.5"
+          />
+          <circle cx="24" cy="24" r="4" fill="#cc0000" />
+          <path
+            d="M24 2v8M24 38v8M2 24h8M38 24h8"
+            stroke="#8b0000"
+            stroke-width="1.5"
+          />
+        </svg>
+        <p>
+          <em>MANCHINEEL</em> lahir dari kolaborasi lima kepala. Memadukan lima
+          sudut pandang berbeda, karya ini menghadirkan sebuah dunia Thriller
+          yang terasa nyata dan mengusik psikologis pembacanya.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============ TEAM SECTION ============ -->
+    <div class="about-main">
+      <div class="team-section">
+        <div class="team-header fade-in-up">
+          <div class="section-label">Para Pencipta</div>
+          <h2 class="section-title">Kenali Tim Kami</h2>
+        </div>
+
+        <!-- ── 5 Member Cards (uniform) ── -->
+        <div class="team-members-grid">
+          <!-- Member 1 — Arya Malakim -->
+          <div class="member-card fade-in-up" style="animation-delay: 0s">
+            <div class="member-img-wrap">
+              <div class="member-img-grad"></div>
+              <div class="member-num-badge">01</div>
+            </div>
+            <div class="member-body">
+              <div class="member-role">Project manager</div>
+              <div class="member-name">Affan Rifki Fawza</div>
+              <p class="member-bio"></p>
+              <div class="member-footer">
+                <div class="member-tags">
+                  <span class="member-tag">Web dev</span>
+                </div>
+                <div class="member-socials-mini">
+                  <a class="social-mini" href="#" title="Instagram">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="3.5" />
+                    </svg>
+                  </a>
+                  <a class="social-mini" href="#" title="Behance">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="3" y="6" width="7" height="12" rx="2" />
+                      <path d="M10 12H6M14 9h7M14 15h7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="member-card fade-in-up" style="animation-delay: 0.05s">
+            <div class="member-img-wrap">
+              <div class="member-img-grad"></div>
+              <div class="member-num-badge">02</div>
+            </div>
+            <div class="member-body">
+              <div class="member-role">member</div>
+              <div class="member-name">Nur Azizah Dwi YR</div>
+              <p class="member-bio"></p>
+              <div class="member-footer">
+                <div class="member-tags">
+                  <span class="member-tag">Scriptwriter</span>
+                </div>
+                <div class="member-socials-mini">
+                  <a class="social-mini" href="#" title="Instagram">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="3.5" />
+                    </svg>
+                  </a>
+                  <a class="social-mini" href="#" title="Behance">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="3" y="6" width="7" height="12" rx="2" />
+                      <path d="M10 12H6M14 9h7M14 15h7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="member-card fade-in-up" style="animation-delay: 0.1s">
+            <div class="member-img-wrap">
+              <div class="member-img-grad"></div>
+              <div class="member-num-badge">03</div>
+            </div>
+            <div class="member-body">
+              <div class="member-role">member</div>
+              <div class="member-name">Rizky Hafid Alfi S</div>
+              <p class="member-bio"></p>
+              <div class="member-footer">
+                <div class="member-tags">
+                  <span class="member-tag">Poster Illustrator</span>
+                </div>
+                <div class="member-socials-mini">
+                  <a class="social-mini" href="#" title="Instagram">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="3.5" />
+                    </svg>
+                  </a>
+                  <a class="social-mini" href="#" title="Twitter">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M4 4l16 16M4 20L20 4" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 4 -->
+          <div class="member-card fade-in-up" style="animation-delay: 0.15s">
+            <div class="member-img-wrap">
+              <div class="member-img-grad"></div>
+              <div class="member-num-badge">04</div>
+            </div>
+            <div class="member-body">
+              <div class="member-role">member</div>
+              <div class="member-name">Tita Tania</div>
+              <p class="member-bio"></p>
+              <div class="member-footer">
+                <div class="member-tags">
+                  <span class="member-tag">Illustrator</span>
+                </div>
+                <div class="member-socials-mini">
+                  <a class="social-mini" href="#" title="Instagram">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="3.5" />
+                    </svg>
+                  </a>
+                  <a class="social-mini" href="#" title="Email">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 5 -->
+          <div class="member-card fade-in-up" style="animation-delay: 0.2s">
+            <div class="member-img-wrap">
+              <div class="member-img-grad"></div>
+              <div class="member-num-badge">05</div>
+            </div>
+            <div class="member-body">
+              <div class="member-role">member</div>
+              <div class="member-name">Rayyan Nurhadi</div>
+              <p class="member-bio"></p>
+              <div class="member-footer">
+                <div class="member-tags">
+                  <span class="member-tag">comic Artist</span>
+                </div>
+                <div class="member-socials-mini">
+                  <a class="social-mini" href="#" title="GitHub">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      />
+                    </svg>
+                  </a>
+                  <a class="social-mini" href="#" title="Instagram">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="3.5" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end team-members-grid -->
+      </div>
+      <!-- end team-section -->
+    </div>
+    <!-- end about-main -->
+
+    <!-- ============ PROJECT INFO SECTION ============ -->
+    <div class="project-section">
+      <!-- Stats bar -->
+      <div class="stats-bar fade-in-up">
+        <div class="stat-cell">
+          <span class="stat-cell-val">5</span>
+          <span class="stat-cell-label">Anggota Tim</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-cell-val">6</span>
+          <span class="stat-cell-label">Chapter</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-cell-val">20+</span>
+          <span class="stat-cell-label">Halaman</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-cell-val">3</span>
+          <span class="stat-cell-label">Bulan Kerja</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-cell-val">12K+</span>
+          <span class="stat-cell-label">Pembaca</span>
+        </div>
+      </div>
+
+      <!-- Project blocks -->
+      <div class="project-grid">
+        <div class="project-block fade-in-up">
+          <div class="project-block-title">
+            <span>◆</span> Kisah Di Balik Proyek
+          </div>
+          <p>
+            MANCHINEEL bermula dari obrolan tengah malam lima teman kelas di
+            Universitas Horizon. Berawal dari keresahan Affan setelah melihat
+            langsung betapa abainya kita terhadap risiko bahaya
+          </p>
+          <p>
+            sehari-hari, lahirlah sebuah kesepakatan: membuat komik edukasi
+            keselamatan dengan pendekatan yang berbeda. Setelah 2 bulan riset,
+            dan begadang, komik ini hadir untuk membuka mata kita bahwa bahaya
+            sering kali mengintai di tempat yang paling tidak terduga.
+          </p>
+        </div>
+        <div class="project-block fade-in-up" style="animation-delay: 0.1s">
+          <div class="project-block-title">
+            <span>◆</span> Inspirasi & Referensi
+          </div>
+          <div class="inspo-list">
+            <div class="inspo-item">
+              <div class="inspo-dot"></div>
+              <span>Junji Ito — Uzumaki & Gyo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div
+        class="fade-in-up"
+        style="text-align: center; margin-top: 40px; padding-bottom: 80px"
+      >
+        <a
+          href="reader.html?chapter=1"
+          class="btn-primary"
+          style="display: inline-flex"
+        >
+          <span>Mulai Membaca Sekarang</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polygon points="5,3 19,12 5,21" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="nav-logo" href="index.html" style="margin-bottom: 0">
+              <div class="logo-icon" style="width: 32px; height: 32px">
+                <svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="20"
+                    cy="20"
+                    r="18"
+                    stroke="#8b0000"
+                    stroke-width="1.5"
+                  />
+                  <ellipse
+                    cx="20"
+                    cy="20"
+                    rx="8"
+                    ry="8"
+                    fill="#8b0000"
+                    opacity="0.9"
+                  />
+                  <circle cx="20" cy="20" r="3" fill="#cc0000" />
+                </svg>
+              </div>
+              <span class="logo-text">MANCHINEEL</span>
+            </a>
+            <p>Education Comic by Group 4.</p>
+          </div>
+          <div>
+            <div class="footer-col-title">Navigasi</div>
+            <ul class="footer-links">
+              <li><a href="index.html">Beranda</a></li>
+              <li><a href="index.html#chapters">Chapter</a></li>
+              <li><a href="about.html">Tentang kami</a></li>
+              <li><a href="reader.html?chapter=1">Mulai Baca</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-col-title">Tim</div>
+            <ul class="footer-links">
+              <li><a href="#">Affan Rifki Fawza</a></li>
+              <li><a href="#">Nur Azizah Dwi YR</a></li>
+              <li><a href="#">Rizky Hafid Alfi S</a></li>
+              <li><a href="#">Tita Tania</a></li>
+              <li><a href="#">Rayyan Nurhadi</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            © 2026 <span>MANCHINEEL</span> · Group 4 · Semua Hak Milik Allah
+          </div>
+          <div class="footer-social">
+            <a class="social-btn" href="#" title="Instagram">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="3.5" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+              </svg>
+            </a>
+            <a class="social-btn" href="#" title="Twitter/X">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 4l16 16M4 20L20 4" />
+              </svg>
+            </a>
+            <a class="social-btn" href="#" title="Webtoon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <path d="M8 12h8M8 8h8M8 16h5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
